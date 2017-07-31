@@ -22,6 +22,10 @@ export function initialize() {
       return;
     }
 
+    if (error.nrNoticed) {
+      return;
+    }
+    error.nrNoticed = true;
     try {
       NREUM.noticeError(error);
     } catch(e) {
