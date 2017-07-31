@@ -39,7 +39,13 @@ export function initialize() {
     return error;
   }
 
-  Ember.onerror = handleError;
+  const _oldOnerror = Ember.onerror;
+  Ember.onerror = function(error) {
+    if (Ember.typeOf(_oldOnerror) === 'function') {
+      _oldOnerror.call(this, error);
+    }
+    handleError(error);
+  };
 
   Ember.RSVP.on('error', handleError);
 
