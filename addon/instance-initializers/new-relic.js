@@ -22,10 +22,14 @@ export function initialize() {
       return;
     }
 
-    if (error.nrNoticed) {
-      return;
+    if (Ember.typeOf(error) === 'error'){
+      if(error.nrNoticed) {
+        return;
+      }else{
+        error.nrNoticed = true;
+      }
     }
-    error.nrNoticed = true;
+
     try {
       NREUM.noticeError(error);
     } catch(e) {
