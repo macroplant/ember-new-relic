@@ -57,9 +57,9 @@ export function initialize() {
 
   Ember.RSVP.on('error', handleError);
 
-  Ember.Logger.error = function(...messages) {
-    handleError(generateError(messages.join(' ')));
-  };
+  // Ember.Logger.error = function(...messages) {
+  //   handleError(generateError(messages.join(' ')));
+  // };
 }
 
 export default {
