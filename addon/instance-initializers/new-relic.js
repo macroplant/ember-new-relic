@@ -22,6 +22,14 @@ export function initialize() {
       return;
     }
 
+    if (Ember.typeOf(error) === 'error'){
+      if(error.nrNoticed) {
+        return;
+      }else{
+        error.nrNoticed = true;
+      }
+    }
+
     try {
       NREUM.noticeError(error);
     } catch(e) {
@@ -31,21 +39,27 @@ export function initialize() {
     console.error(error);
   }
 
-  function generateError(cause, stack) {
-    const error = new Error(cause);
+  // function generateError(cause, stack) {
+  //   const error = new Error(cause);
+  //
+  //   error.stack = stack;
+  //
+  //   return error;
+  // }
 
-    error.stack = stack;
+  // const _oldOnerror = Ember.onerror;
+  // Ember.onerror = function(error) {
+  //   if (Ember.typeOf(_oldOnerror) === 'function') {
+  //     _oldOnerror.call(this, error);
+  //   }
+  //   handleError(error);
+  // };
+  //
+  // Ember.RSVP.on('error', handleError);
 
-    return error;
-  }
-
-  Ember.onerror = handleError;
-
-  Ember.RSVP.on('error', handleError);
-
-  Ember.Logger.error = function(...messages) {
-    handleError(generateError(messages.join(' ')));
-  };
+  // Ember.Logger.error = function(...messages) {
+  //   handleError(generateError(messages.join(' ')));
+  // };
 }
 
 export default {
