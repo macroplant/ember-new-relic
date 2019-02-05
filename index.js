@@ -5,8 +5,8 @@ var writeFile = require('broccoli-file-creator');
 var mergeTrees = require('broccoli-merge-trees');
 
 var defaultBeacon = 'bam.nr-data.net';
-var defaultAgentClassic = 'js-agent.newrelic.com/nr-1016.min.js';
-var defaultAgentSPA = 'js-agent.newrelic.com/nr-spa-1016.min.js';
+var defaultAgentClassic = 'js-agent.newrelic.com/nr-1118.min.js';
+var defaultAgentSPA = 'js-agent.newrelic.com/nr-spa-1118.min.js';
 
 module.exports = {
   name: 'ember-new-relic',
